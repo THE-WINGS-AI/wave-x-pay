@@ -6,7 +6,10 @@ class WelcomeController extends GetxController {
   }
 
   /// Navigates to the Sign In screen
+  // void navigateToSignIn() {
+  //   Get.toNamed('/signin');
+  // }
   void navigateToSignIn() {
-    Get.toNamed('/signin');
+    Get.toNamed('/existing-login');
   }
 }

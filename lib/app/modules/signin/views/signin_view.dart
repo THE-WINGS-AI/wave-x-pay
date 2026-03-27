@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:xtpay/app/widgets/orange_button.dart';
 import 'package:xtpay/app/widgets/white_button.dart';
 
@@ -22,7 +23,7 @@ class SigninView extends GetView<SigninController> {
         ),
         title: const Text(
           "Log In",
-          style: TextStyle(color: Color(0xFF060C8D), fontWeight: FontWeight.bold),
+          style: TextStyle(color: Color(0xFF1D232E), fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -50,51 +51,43 @@ class SigninView extends GetView<SigninController> {
                   "Phone Number",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
-              ),
+              ) ,
             ),
             const SizedBox(height: 10),
 
             // Phone Number Input Row
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                children: [
-                  // Country Code Picker (Stylized)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFFFD6BE), width: 1),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      children: [
-                        Image.network('https://flagcdn.com/w40/in.png', width: 24), // India Flag
-                        const Icon(Icons.arrow_drop_down),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  // Mobile Number Field
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "+91 Mobile Number",
-                        hintStyle: const TextStyle(color: Colors.grey),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Color(0xFFFFD6BE), width: 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Color(0xFFFF5D00), width: 1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
+      Padding(
+  padding:  EdgeInsets.symmetric(horizontal: 25),
+  child: IntlPhoneField(
+    // Logic integration with GetX
+    onChanged: (phone) {
+      controller.updatePhone(phone.completeNumber);
+    },
+    initialCountryCode: 'IN',
+    // UI Customization to match your design
+    showDropdownIcon: true,
+    dropdownIconPosition: IconPosition.trailing,
+    flagsButtonPadding: const EdgeInsets.only(left: 8),
+    decoration: InputDecoration(
+      hintText: "Mobile Number",
+      hintStyle: const TextStyle(color: Colors.grey),
+      // Matching your specific border color 0xFFFFD6BE
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFFFFD6BE), width: 1),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      // Matching your specific focus color 0xFFFF5D00
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xFFFF5D00), width: 1),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      // Important: ensures the border surrounds the whole field
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+  ),
+),
             const SizedBox(height: 50),
             OrangeButton(
               label: "Get OTP",

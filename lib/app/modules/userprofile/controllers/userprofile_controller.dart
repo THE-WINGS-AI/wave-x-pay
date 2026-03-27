@@ -6,4 +6,8 @@ class UserprofileController extends GetxController {
   void toggleDarkMode(bool value) {
     isDarkMode.value = value;
   }
+
+  void navigateToEditUserProfile() {
+    Get.toNamed('/edit-user-profile');
   }
+}

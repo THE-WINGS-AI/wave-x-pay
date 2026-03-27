@@ -27,7 +27,7 @@ class OnbordingController extends GetxController {
 
   void next() {
     if (isLastPage) {
-      Get.offAllNamed('/welcome');
+     Get.toNamed('/welcome');
     } else {
       pageController.nextPage(
           duration: 300.milliseconds, curve: Curves.easeInOut);
@@ -39,5 +39,5 @@ class OnbordingController extends GetxController {
         duration: 300.milliseconds, curve: Curves.easeInOut);
   }
 
-  void skip() => Get.offAllNamed('/welcome');
+  void skip() =>  Get.toNamed('/welcome');
 }

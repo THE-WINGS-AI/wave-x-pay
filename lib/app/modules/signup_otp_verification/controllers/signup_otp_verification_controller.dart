@@ -39,7 +39,7 @@ void showStatusDialog(bool isSuccess) {
     Future.delayed(const Duration(seconds: 3), () {
       if (isSuccess) {
         // Navigate to next page (e.g., Create mPIN)
-        Get.offAllNamed('/generate-mpin'); 
+        Get.offNamed('/generate-mpin'); 
       } else {
         // Close dialog if error
         Get.back(); 

@@ -16,8 +16,8 @@ class OrangeButton extends StatelessWidget {
     this.height = 55,
     this.borderRadius = 25,
     this.gradientColors = const [
-      Color(0xFFFF5D00),
       Color(0x85FF5D00),
+      Color(0xFFFF5D00),
     ],
   }) : super(key: key);
 

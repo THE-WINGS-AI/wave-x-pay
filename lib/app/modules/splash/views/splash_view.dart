@@ -20,9 +20,9 @@ class SplashView extends GetView<SplashController> {
             return Stack(
               children: [
                 Positioned(
-                  top: CustomHight.h60,
-                  left: CustomWidth.w75,
-                  child: Image.asset(
+                  top: 0,
+                  left: 0,
+right: 0,                  child: Image.asset(
                     'asserts/images/upper blur image.png',
                     width: MediaQuery.of(context).size.width * 0.8,
                     fit: BoxFit.contain,
@@ -30,8 +30,9 @@ class SplashView extends GetView<SplashController> {
                 ),
 
                 Positioned(
-                  bottom: -(CustomHight.h38),
-                  left: -(CustomWidth.w90),
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
                   child: Image.asset(
                     'asserts/images/bottom blur image.png',
                     width: MediaQuery.of(context).size.width * 0.8,

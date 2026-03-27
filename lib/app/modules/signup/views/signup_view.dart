@@ -42,15 +42,15 @@ class SignupView extends GetView<SignupController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildLabel("First Name"),
-        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "John", border: InputBorder.none))),
+        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "", border: InputBorder.none))),
         _buildLabel("Last Name"),
-        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "Dao", border: InputBorder.none))),
+        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "", border: InputBorder.none))),
         _buildLabel("Phone Number"),
-        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "Enter your phone number", border: InputBorder.none))),
+        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "", border: InputBorder.none))),
         _buildLabel("D.O.B"),
-        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "mm/dd/yyyy", border: InputBorder.none))),
+        _buildGlassInputField(child: const TextField(decoration: InputDecoration(hintText: "", border: InputBorder.none))),
         const SizedBox(height: 60),
-        OrangeButton(label: "Sign up",horizontalPadding:5,onTap: () =>  signupController.onContinue()),
+        OrangeButton(label: "Continue",horizontalPadding:5,onTap: () =>  signupController.onContinue()),
         const SizedBox(height: 60),
         _buildBottomLoginLink(),
       ],
@@ -118,9 +118,10 @@ class SignupView extends GetView<SignupController> {
       children: [
         const Center(child: Text("Already have an account?")),
         const SizedBox(height: 10),
-        WhiteButton(label: "Log in", onTap: signupController.goToLogin,horizontalPadding: 0,),
+        WhiteButton(label: "Sign in", onTap: signupController.goToLogin,horizontalPadding: 0,),
        
       ],
     );
   }
+
 }

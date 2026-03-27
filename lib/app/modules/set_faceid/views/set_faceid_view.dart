@@ -22,7 +22,7 @@ class SetFaceidView extends GetView<SetFaceidController> {
         ),
         title: const Text(
           "Set Face ID",
-          style: TextStyle(color: Color(0xFF060C8D), fontWeight: FontWeight.bold),
+          style: TextStyle(color: Color(0xFF1D232E), fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),

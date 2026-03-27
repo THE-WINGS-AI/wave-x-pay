@@ -21,7 +21,7 @@ class SetFaceidController extends GetxController {
     // Auto-handle the 3-second delay
     Future.delayed(const Duration(seconds: 3), () {
       if (isSuccess) {
-        Get.toNamed('/confirmation-signin');
+        Get.toNamed('/confirmation-signup');
       } else {
         Get.back(); // Close bottom sheet on error
       }
@@ -31,6 +31,6 @@ class SetFaceidController extends GetxController {
   void skipForNow() {
     print("Skip for now pressed");
     // Navigate to Home/Dashboard
-    Get.toNamed('/confirmation-signin');
+    Get.toNamed('/confirmation-signup');
   }
 }

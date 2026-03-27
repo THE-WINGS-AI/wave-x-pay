@@ -41,7 +41,9 @@ class SignupOtpVerificationView extends GetView<SignupOtpVerificationController>
             ),
             const SizedBox(height: 10),
             const Text(
-              "Enter the 4 digit Code that we sent\nto 8619___09",
+              // "Enter the 4 digit Code that we sent\nto 8619___09",
+                            "Enter the 4 digit Code that we sent",
+
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.grey, fontSize: 14),
             ),
