@@ -7,7 +7,7 @@ var phoneNumber = "".obs;
     phoneNumber.value = fullNumber;
   }
   void getOtp() {
-    print("Getting OTP for: ${phoneNumber.value}");
+    // print("Getting OTP for: ${phoneNumber.value}");
     Get.toNamed('/signin-otp-verification');
   }
    void navigateToSignUp() {

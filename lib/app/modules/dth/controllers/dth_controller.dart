@@ -18,9 +18,9 @@ var selectedServiceIndex = 0.obs;
 
   void processRequest() {
     if (selectedServiceIndex.value == 0) {
-      print("Viewing plans for DTH...");
+      // print("Viewing plans for DTH...");
     } else {
-      print("Fetching bill details for Cable...");
+      // print("Fetching bill details for Cable...");
     }
   }
 }

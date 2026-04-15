@@ -12,6 +12,6 @@ class ElectricityController extends GetxController {
   final List<String> providers = ["BSES Rajdhani", "TPDDL", "Adani Electricity"];
 
   void fetchBill() {
-    print("Fetching bill for: ${consumerIdController.text} from ${selectedProvider.value}");
+    // print("Fetching bill for: ${consumerIdController.text} from ${selectedProvider.value}");
   }
 }

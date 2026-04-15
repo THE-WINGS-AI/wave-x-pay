@@ -39,7 +39,7 @@ void validateMpin() {
 
   void forgotPin() {
     // "do nothing" as requested
-    print("Forgot PIN tapped - No action defined.");
+    // print("Forgot PIN tapped - No action defined.");
   }
   final LocalAuthentication auth = LocalAuthentication();
   Future<void> handleAuthResult() async {
@@ -106,7 +106,7 @@ void validateMpin() {
   }
   void login() {
     String pin = controllers.map((e) => e.text).join();
-    print("Logging in with PIN: $pin");
+    // print("Logging in with PIN: $pin");
     Get.offAllNamed('/main-navigation');
     // Implement auth logic
   }

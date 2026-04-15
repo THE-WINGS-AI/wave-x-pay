@@ -15,7 +15,7 @@ class GasbillController extends GetxController {
 
   void fetchBill() {
     if (selectedProvider.value != "Choose your provider") {
-      print("Fetching Gas Bill for: ${consumerNumberController.text}");
+      // print("Fetching Gas Bill for: ${consumerNumberController.text}");
     } else {
       Get.snackbar("Error", "Please select a provider");
     }

@@ -5,11 +5,11 @@ class ReachargeController extends GetxController {
 final mobileNumberController = TextEditingController();
 
   void browsePlans() {
-    print("Navigating to plans for: ${mobileNumberController.text}");
+    // print("Navigating to plans for: ${mobileNumberController.text}");
     // Get.toNamed(Routes.RECHARGE_PLANS);
   }
 
   void openContactPicker() {
-    print("Opening contacts...");
+    // print("Opening contacts...");
   }
 }

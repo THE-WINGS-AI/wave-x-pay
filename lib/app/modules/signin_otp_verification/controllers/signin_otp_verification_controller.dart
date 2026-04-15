@@ -19,12 +19,12 @@ final List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
     String otp = controllers.map((e) => e.text).join();
 
 
-    print("Verifying OTP: $otp");
+    // print("Verifying OTP: $otp");
     Get.offAllNamed('/main-navigation');
   }
 
   void resendOtp() {
-    print("Resending OTP...");
+    // print("Resending OTP...");
   }
 
   void onClose() {

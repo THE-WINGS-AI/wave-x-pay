@@ -21,12 +21,12 @@ final List<FocusNode> focusNodes = List.generate(4, (index) => FocusNode());
 
     showStatusDialog(isSuccess);
 
-    print("Verifying OTP: $otp");
+    // print("Verifying OTP: $otp");
     // Get.toNamed(Routes.SUCCESS);
   }
 
   void resendOtp() {
-    print("Resending OTP...");
+    // print("Resending OTP...");
   }
 void showStatusDialog(bool isSuccess) {
     Get.bottomSheet(

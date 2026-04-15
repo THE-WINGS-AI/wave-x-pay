@@ -7,12 +7,12 @@ class EditUserProfileController extends GetxController {
   final dobController = TextEditingController(text: "19/03/1999");
 
   void onUpdateProfile() {
-    print("Profile Updated for: ${firstNameController.text}");
+    // print("Profile Updated for: ${firstNameController.text}");
     Get.back(); // Return to previous screen after update
   }
 
   void onChangeProfileImage() {
-    print("Change profile image triggered");
+    // print("Change profile image triggered");
   }
 
   @override

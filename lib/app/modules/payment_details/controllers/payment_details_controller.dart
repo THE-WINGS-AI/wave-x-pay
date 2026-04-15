@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class PaymentDetailsController extends GetxController {
   void shareReceipt() {
-    print("Sharing receipt...");
+    // print("Sharing receipt...");
   }
 
   void goHome() {
