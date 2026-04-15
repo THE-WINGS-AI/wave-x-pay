@@ -61,7 +61,7 @@ class SigninView extends GetView<SigninController> {
   child: IntlPhoneField(
     // Logic integration with GetX
     onChanged: (phone) {
-      controller.updatePhone(phone.completeNumber);
+      signinController.updatePhone(phone.completeNumber);
     },
     initialCountryCode: 'IN',
     // UI Customization to match your design

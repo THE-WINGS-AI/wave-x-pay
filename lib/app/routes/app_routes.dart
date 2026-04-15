@@ -36,6 +36,8 @@ abstract class Routes {
   static const DTH = _Paths.DTH;
   static const SEEALL_HOME_SERVICE = _Paths.SEEALL_HOME_SERVICE;
   static const DATACABLE = _Paths.DATACABLE;
+  static const ERROR = _Paths.ERROR;
+  static const NETWORKERROR = _Paths.NETWORKERROR;
 }
 
 abstract class _Paths {
@@ -73,4 +75,6 @@ abstract class _Paths {
   static const DTH = '/dth';
   static const SEEALL_HOME_SERVICE = '/seeall-home-service';
   static const DATACABLE = '/datacable';
+  static const ERROR = '/error';
+  static const NETWORKERROR = '/networkerror';
 }

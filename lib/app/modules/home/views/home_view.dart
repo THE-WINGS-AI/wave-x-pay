@@ -26,16 +26,16 @@ class HomeView extends GetView<HomeController> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: _buildWalletCard(),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 25),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: _buildQuickActions(),
               ),
-const SizedBox(height: 15),
+              const SizedBox(height: 15),
 
-_buildFASTagBanner(), 
+              _buildFASTagBanner(),
 
-const SizedBox(height: 10),              
+              const SizedBox(height: 10),
 
               Stack(
                 clipBehavior: Clip.none, // Allows the card to "pop out" of the stack boundaries
@@ -133,153 +133,361 @@ const SizedBox(height: 10),
       ],
     );
   }
-Widget _buildFASTagBanner() {
-  return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 7),
-    width: double.infinity,
-    height: 190, // Fixed height to match the aspect ratio
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Colors.transparent,
-    ),
-    child: Stack(
-      children: [
-        // The Car Image (Positioned to the right)
-        Positioned(
-          right: 0,
-          left: 0,
-          bottom: 0,
-          top: 0,
-          child: Image.asset(
-            'asserts/images/home hero image with car.png',
-            fit: BoxFit.contain,
+
+  Widget _buildFASTagBanner() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 7),
+      width: double.infinity,
+      height: 190, // Fixed height to match the aspect ratio
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.transparent,
+      ),
+      child: Stack(
+        children: [
+          // The Car Image (Positioned to the right)
+          Positioned(
+            right: 0,
+            left: 0,
+            bottom: 0,
+            top: 0,
+            child: Image.asset(
+              'asserts/images/home hero image with car.png',
+              fit: BoxFit.contain,
+            ),
           ),
-        ),
-        // The Text Content
-        Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 20.0,vertical: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
+          // The Text Content
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Text(
+                    "New feature",
+                    style: TextStyle(
+                      color: Color(0xFF060C8D),
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-                child: const Text(
-                  "New feature",
+                const SizedBox(height: 6),
+                const Text(
+                  "FASTag - Coming Soon",
                   style: TextStyle(
-                    color: Color(0xFF060C8D),
-                    fontSize: 12,
+                    color: Colors.white,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-              const SizedBox(height: 6),
-              const Text(
-                "FASTag - Coming Soon",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 2),
-              const Text(
-                "Link your vehicle & pay tolls automatically.",
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 11,
-                ),
-              ),
-              const SizedBox(height: 6),
-              // Notify Me Button
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor:  Color(0xFF060C8D),
-                  foregroundColor: Colors.white,
-                  padding:  EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                const SizedBox(height: 2),
+                const Text(
+                  "Link your vehicle & pay tolls automatically.",
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 11,
                   ),
                 ),
-                child:  Text("Notify Me", style: TextStyle(fontSize: 9),),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-  Widget _buildWalletCard() {
-    return Container(
-      width: double.infinity,
-      height: 175,
-      padding: const EdgeInsets.only(top: 40.0, bottom: 40.0, right: 25.0, left: 25.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        image: const DecorationImage(
-          image: AssetImage('asserts/images/home balance background.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.15),
-                  borderRadius: BorderRadius.circular(20),
+                const SizedBox(height: 6),
+                // Notify Me Button
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF060C8D),
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: Text(
+                    "Notify Me",
+                    style: TextStyle(fontSize: 9),
+                  ),
                 ),
-                child: Row(
-                  children: [
-                    Image.asset('asserts/images/home wallet icon.png', width: 18),
-                    const SizedBox(width: 8),
-                    const Text("Wallet - xx234", style: TextStyle(color: Colors.white, fontSize: 12)),
-                    const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 16),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10),
-              Obx(() => Row(
-                    children: [
-                      Text(
-                        homeController.isBalanceVisible.value ? "\₹3748.98" : "\₹ •••••••",
-                        style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(width: 5),
-                      IconButton(
-                        icon: Icon(
-                          homeController.isBalanceVisible.value ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                        onPressed: homeController.toggleBalance,
-                      ),
-                    ],
-                  )),
-            ],
+              ],
+            ),
           ),
-          Column(
-            children: [
-              Image.asset('asserts/images/home add money icon.png', width: 55),
-              const SizedBox(height: 8),
-              const Text("Add Money", style: TextStyle(color: Colors.white, fontSize: 12)),
-            ],
-          )
         ],
       ),
     );
   }
+  // 1. Add this variable to your controller or State class
 
+Widget _buildWalletCard() {
+  return GestureDetector(
+    onTap: () =>homeController.toggleExpanded(),
+    child: Obx(()
+     {   final  double targetMargin = homeController.isExpanded.value ? 150 : 0;
+
+   return AnimatedContainer(
+    margin: EdgeInsets.only(top: targetMargin.clamp(0.0, double.infinity)),
+      duration: const Duration(milliseconds: 1000),
+      curve: Curves.easeOutCubic,
+      width: double.infinity,
+      // Increase height when expanded to prevent clipping
+      height: homeController.isExpanded.value ? 250 : 250, 
+      decoration: BoxDecoration(
+        color: const Color(0xFF060C8D),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Stack(
+        clipBehavior: Clip.none, // Allows cards to pop out of the container top
+        children: [
+          
+          // 1. Razorpay Card (Furthest Back)
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+            top: homeController.isExpanded.value ? -160 : 20, // Moves way up
+            left: homeController.isExpanded.value?40: 20,
+            right: homeController.isExpanded.value?0:20,
+            child: AnimatedRotation(
+              duration: const Duration(milliseconds: 500),
+              turns: homeController.isExpanded.value ? 0.04 : 0, // Slight tilt left
+              child: AnimatedScale(
+                duration: const Duration(milliseconds: 500),
+                scale: homeController.isExpanded.value ? 0.9 : 1.0, // Get smaller as it goes back
+                child: Image.asset(
+                  'asserts/images/Razorpay Card.png',
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
+          ),
+    
+          // 2. PayPal Card (Middle)
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+            top: homeController.isExpanded.value ? -40 : 55, // Moves up, but less than Razorpay
+            left: 20,
+            right: 20,
+            child: AnimatedRotation(
+              duration: const Duration(milliseconds: 500),
+              turns: homeController.isExpanded.value ? 0.02 : 0, // Slight tilt right
+              child: AnimatedScale(
+                duration: const Duration(milliseconds: 500),
+                scale: homeController.isExpanded.value ? 0.95 : 1.0,
+                child: Image.asset(
+                  'asserts/images/Paypal Card.png',
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
+          ),
+    
+          // 3. Front Part / White Panel
+          // Note: We use a regular Positioned here because the front stays static
+          Positioned(
+            top: 85,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Image.asset(
+              'asserts/images/Front Part wallet card.png',
+              fit: BoxFit.fill,
+            ),
+          ),
+    
+          // 4. Content Layer
+          Padding(
+            padding: const EdgeInsets.only(top: 80.0, bottom: 20.0, right: 25.0, left: 25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    // Wallet Selector Chip
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.15),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        children: [
+                          Image.asset('asserts/images/home wallet icon.png', width: 18),
+                          const SizedBox(width: 8),
+                          const Text("Wallet - xx234",
+                              style: TextStyle(color: Colors.white, fontSize: 12)),
+                          const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 16),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    // Balance
+                    Row(
+                      children: [
+                        Text(
+                          homeController.isBalanceVisible.value ? "₹3748.98" : "₹ •••••••",
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 5),
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          icon: Icon(
+                            homeController.isBalanceVisible.value
+                                ? Icons.visibility_off_outlined
+                                : Icons.visibility_outlined,
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                          onPressed: homeController.toggleBalance,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                // Add Money Button
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Image.asset('asserts/images/home add money icon.png', width: 55),
+                    const SizedBox(height: 8),
+                    const Text("Add Money",
+                        style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500)),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );}),
+  );
+}
+// Widget _buildWalletCard() {
+//   return Container(
+//     width: double.infinity,
+//     height: 250, // Adjusted height to accommodate the stacking effect
+//     decoration: BoxDecoration(
+//       color: const Color(0xFF060C8D), // Your new background color
+//       borderRadius: BorderRadius.circular(30),
+//     ),
+//     child: Stack(
+//       children: [
+//         // 1. Razorpay Card (Furthest Back)
+//         Positioned(
+//           top: 20,
+//           left: 20,
+//           right: 20,
+//           child: Image.asset(
+//             'asserts/images/Razorpay Card.png',
+//             fit: BoxFit.fitWidth,
+//           ),
+//         ),
+
+//         // 2. PayPal Card (Middle)
+//         Positioned(
+//           top: 55, // Offset to create the stepped look
+//           left: 20,
+//           right: 20,
+//           child: Image.asset(
+//             'asserts/images/Paypal Card.png',
+//             fit: BoxFit.fitWidth,
+//           ),
+//         ),
+
+//         // 3. Front Part / White Panel (Front)
+//         Positioned(
+//           top: 85, // Positioned where the white panel starts
+//           left: 0,
+//           right: 0,
+//           bottom: 0,
+//           child: Image.asset(
+//             'asserts/images/Front Part wallet card.png',
+//             fit: BoxFit.fill,
+//           ),
+//         ),
+
+//         // 4. Content Layer (Text and Buttons)
+//         Padding(
+//           padding: const EdgeInsets.only(top: 80.0, bottom: 20.0, right: 25.0, left: 25.0),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             crossAxisAlignment: CrossAxisAlignment.end, // Align items to the bottom
+//             children: [
+//               Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 mainAxisAlignment: MainAxisAlignment.end,
+//                 children: [
+//                   // Wallet Selector Chip
+//                   Container(
+//                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+//                     decoration: BoxDecoration(
+//                       color: Colors.white.withOpacity(0.15),
+//                       borderRadius: BorderRadius.circular(20),
+//                     ),
+//                     child: Row(
+//                       children: [
+//                         Image.asset('asserts/images/home wallet icon.png', width: 18),
+//                         const SizedBox(width: 8),
+//                         const Text("Wallet - xx234",
+//                             style: TextStyle(color: Colors.white, fontSize: 12)),
+//                         const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 16),
+//                       ],
+//                     ),
+//                   ),
+//                   const SizedBox(height: 15),
+//                   // Balance with Visibility Toggle
+//                   Obx(() => Row(
+//                         children: [
+//                           Text(
+//                             homeController.isBalanceVisible.value ? "₹3748.98" : "₹ •••••••",
+//                             style: const TextStyle(
+//                                 color: Colors.white,
+//                                 fontSize: 26,
+//                                 fontWeight: FontWeight.bold),
+//                           ),
+//                           const SizedBox(width: 5),
+//                           IconButton(
+//                             padding: EdgeInsets.zero,
+//                             constraints: const BoxConstraints(),
+//                             icon: Icon(
+//                               homeController.isBalanceVisible.value
+//                                   ? Icons.visibility_off_outlined
+//                                   : Icons.visibility_outlined,
+//                               color: Colors.white,
+//                               size: 24,
+//                             ),
+//                             onPressed: homeController.toggleBalance,
+//                           ),
+//                         ],
+//                       )),
+//                 ],
+//               ),
+//               // Add Money Button
+//               Column(
+//                 mainAxisAlignment: MainAxisAlignment.end,
+//                 children: [
+//                   Image.asset('asserts/images/home add money icon.png', width: 55),
+//                   const SizedBox(height: 8),
+//                   const Text("Add Money",
+//                       style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500)),
+//                 ],
+//               )
+//             ],
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
   Widget _buildQuickActions() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -551,4 +759,68 @@ Widget _buildFASTagBanner() {
       ],
     );
   }
+}
+
+// class BottomCurveClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     Path path = Path();
+
+//     path.lineTo(0, size.height - 20);
+
+//     path.quadraticBezierTo(
+//       size.width * 0.25,
+//       size.height,
+//       size.width * 0.5,
+//       size.height - 10,
+//     );
+
+//     path.quadraticBezierTo(
+//       size.width * 0.75,
+//       size.height - 20,
+//       size.width,
+//       size.height - 10,
+//     );
+
+//     path.lineTo(size.width, 0);
+//     path.close();
+
+//     return path;
+//   }
+
+//   @override
+//   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+// }
+class TopCurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    path.lineTo(0, size.height - 20);
+    path.quadraticBezierTo(size.width * 0.5, size.height + 20,
+        size.width, size.height - 20);
+    path.lineTo(size.width, 0);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
+}
+
+class BottomCurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    path.moveTo(0, 20);
+    path.quadraticBezierTo(size.width * 0.5, -20, size.width, 20);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

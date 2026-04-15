@@ -16,6 +16,8 @@ import '../modules/enter_amount/bindings/enter_amount_binding.dart';
 import '../modules/enter_amount/views/enter_amount_view.dart';
 import '../modules/enter_mpin/bindings/enter_mpin_binding.dart';
 import '../modules/enter_mpin/views/enter_mpin_view.dart';
+import '../modules/error/bindings/error_binding.dart';
+import '../modules/error/views/error_view.dart';
 import '../modules/existing_login/bindings/existing_login_binding.dart';
 import '../modules/existing_login/views/existing_login_view.dart';
 import '../modules/existing_otp_verification/bindings/existing_otp_verification_binding.dart';
@@ -28,6 +30,8 @@ import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/networkerror/bindings/networkerror_binding.dart';
+import '../modules/networkerror/views/networkerror_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';
 import '../modules/notification/views/notification_view.dart';
 import '../modules/offers/bindings/offers_binding.dart';
@@ -232,13 +236,23 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SEEALL_HOME_SERVICE,
-      page: () =>  SeeallHomeServiceView(),
+      page: () => SeeallHomeServiceView(),
       binding: SeeallHomeServiceBinding(),
     ),
     GetPage(
       name: _Paths.DATACABLE,
-      page: () =>  DatacableView(),
+      page: () => DatacableView(),
       binding: DatacableBinding(),
+    ),
+    GetPage(
+      name: _Paths.ERROR,
+      page: () => ErrorView(),
+      binding: ErrorBinding(),
+    ),
+    GetPage(
+      name: _Paths.NETWORKERROR,
+      page: () =>  NetworkerrorView(),
+      binding: NetworkerrorBinding(),
     ),
   ];
 }

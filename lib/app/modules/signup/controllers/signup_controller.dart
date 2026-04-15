@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 class SignupController extends GetxController {
   var isWhatsAppAuthorized = true.obs;
 
-  var firstName = "".obs;
-  var lastName = "".obs;
-  var phone = "".obs;
-  var dob = "".obs;
 
- 
+
+ var phoneNumber = "".obs;
+
+  void updatePhone(String fullNumber) {
+    phoneNumber.value = fullNumber;
+  }
 
   void onContinue() {
         Get.toNamed('/signup-otp-verification');

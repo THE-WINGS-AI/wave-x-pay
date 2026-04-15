@@ -720,6 +720,13 @@ Widget _buildAmountInput() {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Image.asset(
+          'asserts/images/enter amount success.gif', // Ensure the path matches your pubspec.yaml
+          height: 150, // Adjust size as needed
+          width: 150,
+        ),
+                    const SizedBox(height: 10),
+
           const Text("Payment Successful", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
           const SizedBox(height: 10),
           Obx(() => Text("₹${enterAmountController.displayAmount.value}", style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Colors.white))),

@@ -4,5 +4,18 @@ class HomeController extends GetxController {
 var isBalanceVisible = true.obs;
   var currentTabIndex = 0.obs;
 
-  void toggleBalance() => isBalanceVisible.value = !isBalanceVisible.value;
+  var isWalletExpanded = false.obs;
+
+  void toggleBalance() {
+    isBalanceVisible.value = !isBalanceVisible.value;
+  }
+var isExpanded = false.obs;
+
+  void toggleExpanded() {
+    isExpanded.value = !isExpanded.value;
+  }
+  // NEW method to toggle expansion
+  void toggleWalletExpansion() {
+    isWalletExpanded.value = !isWalletExpanded.value;
+  }
 }
