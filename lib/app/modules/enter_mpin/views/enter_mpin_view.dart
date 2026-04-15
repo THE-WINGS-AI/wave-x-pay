@@ -64,7 +64,7 @@ class EnterMpinView extends GetView<EnterMpinController> {
 
             // Sign In using Touch ID Button
             GestureDetector(
-              onTap: enterMpinController.authenticateWithBiometrics,
+              onTap: () => enterMpinController.handleAuthResult(),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 decoration: BoxDecoration(

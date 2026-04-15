@@ -1,28 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'package:get/get.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:xtpay/app/widgets/qr_code_custom_painter.dart';
 
 import '../controllers/qr_scan_controller.dart';
 
 class QrScanView extends GetView<QrScanController> {
   final QrScanController qrScanController = Get.put(QrScanController());
+
   QrScanView({super.key});
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() => qrScanController.isSearching.value ? _buildContactSelectionView() : _buildCameraView(context)),
     );
   }
-// SCREEN 1: Camera Scanner
+
   Widget _buildCameraView(BuildContext context) {
     return Stack(
       children: [
-        // Camera Feed
-        qrScanController.isInitialized.value 
-            ? Positioned.fill(child: CameraPreview(qrScanController.cameraController!)) 
-            : Container(color: Colors.black),
+        // MobileScanner for QR scanning
+        // MobileScanner(
+        //   allowDuplicates: false,
+        //   onDetect: (barcode, args) {
+        //     final String? code = barcode.rawValue;
+        //     if (code != null) {
+        //       // qrScanController.navigateToEnterAmount(code);
+        //                     qrScanController.navigateToEnterAmount();
 
-        // 1. App Bar with Title
+        //     }
+        //   },
+        // ),
+             MobileScanner(
+        controller: MobileScannerController(
+          detectionSpeed: DetectionSpeed.normal,
+          facing: CameraFacing.back,
+        ),
+        onDetect: (BarcodeCapture capture) {
+          final List<Barcode> barcodes = capture.barcodes;
+          if (barcodes.isNotEmpty) {
+            final String? code = barcodes.first.rawValue;
+            if (code != null) {
+                            qrScanController.navigateToEnterAmount();
+
+              // qrScanController.navigateToEnterAmount(code);
+            }
+          }
+        },
+      ),
+        // App Bar with Title
         Positioned(
           top: 40,
           left: 0,
@@ -40,61 +67,59 @@ class QrScanView extends GetView<QrScanController> {
                   style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
                 ),
               ),
-              const SizedBox(width: 48), // Balance for the back button
+              const SizedBox(width: 48),
             ],
           ),
         ),
-
-        // 2. Custom QR Boundary Overlay
+        // Custom QR Boundary Overlay
         _buildCameraOverlay(),
-   Positioned(
-  bottom: 100,
-  left: 20,
-  right: 20,
-  child: GestureDetector(
-    onTap: qrScanController.toggleView,
-    child: Container(
-      height: 50, // Height matching your screenshot (346 x 50)
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8), // Rounded corners
-        border: Border.all(
-          color: const Color(0xFFE0E0E0), // Subtle light grey border
-          width: 1,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          // The Search Icon from your utilities
-          Image.asset(
-            'asserts/images/bottomnavbar utilities icon notselected.png',
-            width: 24,
-            height: 24,
-          ),
-          const SizedBox(width: 12),
-          const Expanded(
-            child: Text(
-              "Enter name or number",
-              style: TextStyle(
-                color: Color(0xFFBDBDBD),
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+        Positioned(
+          bottom: 100,
+          left: 20,
+          right: 20,
+          child: GestureDetector(
+            onTap: qrScanController.toggleView,
+            child: Container(
+              height: 50,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: const Color(0xFFE0E0E0),
+                  width: 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'asserts/images/bottomnavbar utilities icon notselected.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                  const SizedBox(width: 12),
+                  const Expanded(
+                    child: Text(
+                      "Enter name or number",
+                      style: TextStyle(
+                        color: Color(0xFFBDBDBD),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-      ),
-    ),
-  ),
-),
+        ),
       ],
     );
   }
@@ -104,22 +129,20 @@ class QrScanView extends GetView<QrScanController> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-        
           Stack(
             alignment: Alignment.center,
             children: [
-              // Custom L-shaped corners
               CustomPaint(
                 size: const Size(250, 250),
                 painter: QRScannerPainter(),
               ),
-             
             ],
           ),
         ],
       ),
     );
   }
+
   // SCREEN 1: Camera Scanner
   // Widget _buildCameraView(BuildContext context) {
   //   return Stack(
@@ -131,7 +154,6 @@ class QrScanView extends GetView<QrScanController> {
   //       _buildCameraOverlay(),
 
   //       // Bottom Search Bar
-      
 
   //       // App Bar
   //       Positioned(
@@ -193,61 +215,61 @@ class QrScanView extends GetView<QrScanController> {
     );
   }
 
-Widget _buildContactInputArea() {
-  return Stack(
-    alignment: Alignment.bottomCenter,
-    clipBehavior: Clip.none,
-    children: [
-      Container(
-        margin: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 100),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15), // Adjusted for the softer rectangular look
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: TextField(
-          onChanged: (v) => qrScanController.searchText.value = v,
-          textAlignVertical: TextAlignVertical.center,
-          decoration: InputDecoration(
-            hintText: "Enter name or number",
-            hintStyle: const TextStyle(
-              color: Color(0xFF8E8E93),
-              fontSize: 16,
-            ),
-            border: InputBorder.none,
-            // Search icon on the left
-            prefixIcon: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Image.asset(
-                'asserts/images/bottomnavbar utilities icon notselected.png',
-                width: 20,
-                height: 20,
+  Widget _buildContactInputArea() {
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 100),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15), // Adjusted for the softer rectangular look
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.05),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
-            ),
-            // Contact icon on the right
-            suffixIcon: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Image.asset(
-                'asserts/images/qr code contact icon.png', 
-                width: 24,
+            ],
+          ),
+          child: TextField(
+            onChanged: (v) => qrScanController.searchText.value = v,
+            textAlignVertical: TextAlignVertical.center,
+            decoration: InputDecoration(
+              hintText: "Enter name or number",
+              hintStyle: const TextStyle(
+                color: Color(0xFF8E8E93),
+                fontSize: 16,
+              ),
+              border: InputBorder.none,
+              // Search icon on the left
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Image.asset(
+                  'asserts/images/bottomnavbar utilities icon notselected.png',
+                  width: 20,
+                  height: 20,
+                ),
+              ),
+              // Contact icon on the right
+              suffixIcon: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Image.asset(
+                  'asserts/images/qr code contact icon.png',
+                  width: 24,
+                ),
               ),
             ),
           ),
         ),
-      ),
-      
-      // Floating Camera/QR Toggle Icon at the bottom
-      
-    ],
-  );
-}
+
+        // Floating Camera/QR Toggle Icon at the bottom
+      ],
+    );
+  }
+
   Widget _buildContactList() {
     return Expanded(
       child: Container(
@@ -278,7 +300,7 @@ Widget _buildContactInputArea() {
 
   Widget _contactTile() {
     return GestureDetector(
-      onTap:() =>qrScanController.navigateToEnterAmount(),
+      onTap: () => qrScanController.navigateToEnterAmount(),
       child: ListTile(
         leading: const CircleAvatar(backgroundImage: AssetImage('asserts/images/userprofile user image.png')),
         title: const Text("Phillip Bator", style: TextStyle(fontWeight: FontWeight.bold)),

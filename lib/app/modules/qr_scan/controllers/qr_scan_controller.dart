@@ -36,4 +36,8 @@ class QrScanController extends GetxController {
   void navigateToEnterAmount() {
     Get.toNamed('/enter-amount');
   }
+  //  void navigateToEnterAmount(String qrData) {
+  //   // You can pass qrData if needed
+  //   Get.toNamed('/enter-amount', arguments: {'qrData': qrData});
+  // }
 }
