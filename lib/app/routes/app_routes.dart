@@ -38,6 +38,7 @@ abstract class Routes {
   static const DATACABLE = _Paths.DATACABLE;
   static const ERROR = _Paths.ERROR;
   static const NETWORKERROR = _Paths.NETWORKERROR;
+  static const KYC = _Paths.KYC;
 }
 
 abstract class _Paths {
@@ -77,4 +78,5 @@ abstract class _Paths {
   static const DATACABLE = '/datacable';
   static const ERROR = '/error';
   static const NETWORKERROR = '/networkerror';
+  static const KYC = '/kyc';
 }

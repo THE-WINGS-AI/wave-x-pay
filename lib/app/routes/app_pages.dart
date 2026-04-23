@@ -30,6 +30,8 @@ import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/kyc/bindings/kyc_binding.dart';
+import '../modules/kyc/views/kyc_view.dart';
 import '../modules/networkerror/bindings/networkerror_binding.dart';
 import '../modules/networkerror/views/networkerror_view.dart';
 import '../modules/notification/bindings/notification_binding.dart';
@@ -251,8 +253,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.NETWORKERROR,
-      page: () =>  NetworkerrorView(),
+      page: () => NetworkerrorView(),
       binding: NetworkerrorBinding(),
+    ),
+    GetPage(
+      name: _Paths.KYC,
+      page: () =>  KycView(),
+      binding: KycBinding(),
     ),
   ];
 }

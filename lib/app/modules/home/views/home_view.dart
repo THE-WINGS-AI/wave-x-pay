@@ -16,6 +16,7 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -41,6 +42,7 @@ class HomeView extends GetView<HomeController> {
                 clipBehavior: Clip.none, // Allows the card to "pop out" of the stack boundaries
                 alignment: Alignment.topCenter,
                 children: [
+
                   // 1. THE GLASS CONTAINER (Background)
                   Padding(
                     padding: const EdgeInsets.only(top: 50), // Creates space for the card to sit into
@@ -105,7 +107,6 @@ class HomeView extends GetView<HomeController> {
       ),
     );
   }
-
   Widget _buildHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -370,125 +371,7 @@ Widget _buildWalletCard() {
       ),
     );}),
   );
-}
-// Widget _buildWalletCard() {
-//   return Container(
-//     width: double.infinity,
-//     height: 250, // Adjusted height to accommodate the stacking effect
-//     decoration: BoxDecoration(
-//       color: const Color(0xFF060C8D), // Your new background color
-//       borderRadius: BorderRadius.circular(30),
-//     ),
-//     child: Stack(
-//       children: [
-//         // 1. Razorpay Card (Furthest Back)
-//         Positioned(
-//           top: 20,
-//           left: 20,
-//           right: 20,
-//           child: Image.asset(
-//             'asserts/images/Razorpay Card.png',
-//             fit: BoxFit.fitWidth,
-//           ),
-//         ),
-
-//         // 2. PayPal Card (Middle)
-//         Positioned(
-//           top: 55, // Offset to create the stepped look
-//           left: 20,
-//           right: 20,
-//           child: Image.asset(
-//             'asserts/images/Paypal Card.png',
-//             fit: BoxFit.fitWidth,
-//           ),
-//         ),
-
-//         // 3. Front Part / White Panel (Front)
-//         Positioned(
-//           top: 85, // Positioned where the white panel starts
-//           left: 0,
-//           right: 0,
-//           bottom: 0,
-//           child: Image.asset(
-//             'asserts/images/Front Part wallet card.png',
-//             fit: BoxFit.fill,
-//           ),
-//         ),
-
-//         // 4. Content Layer (Text and Buttons)
-//         Padding(
-//           padding: const EdgeInsets.only(top: 80.0, bottom: 20.0, right: 25.0, left: 25.0),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             crossAxisAlignment: CrossAxisAlignment.end, // Align items to the bottom
-//             children: [
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 mainAxisAlignment: MainAxisAlignment.end,
-//                 children: [
-//                   // Wallet Selector Chip
-//                   Container(
-//                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-//                     decoration: BoxDecoration(
-//                       color: Colors.white.withOpacity(0.15),
-//                       borderRadius: BorderRadius.circular(20),
-//                     ),
-//                     child: Row(
-//                       children: [
-//                         Image.asset('asserts/images/home wallet icon.png', width: 18),
-//                         const SizedBox(width: 8),
-//                         const Text("Wallet - xx234",
-//                             style: TextStyle(color: Colors.white, fontSize: 12)),
-//                         const Icon(Icons.keyboard_arrow_down, color: Colors.white, size: 16),
-//                       ],
-//                     ),
-//                   ),
-//                   const SizedBox(height: 15),
-//                   // Balance with Visibility Toggle
-//                   Obx(() => Row(
-//                         children: [
-//                           Text(
-//                             homeController.isBalanceVisible.value ? "₹3748.98" : "₹ •••••••",
-//                             style: const TextStyle(
-//                                 color: Colors.white,
-//                                 fontSize: 26,
-//                                 fontWeight: FontWeight.bold),
-//                           ),
-//                           const SizedBox(width: 5),
-//                           IconButton(
-//                             padding: EdgeInsets.zero,
-//                             constraints: const BoxConstraints(),
-//                             icon: Icon(
-//                               homeController.isBalanceVisible.value
-//                                   ? Icons.visibility_off_outlined
-//                                   : Icons.visibility_outlined,
-//                               color: Colors.white,
-//                               size: 24,
-//                             ),
-//                             onPressed: homeController.toggleBalance,
-//                           ),
-//                         ],
-//                       )),
-//                 ],
-//               ),
-//               // Add Money Button
-//               Column(
-//                 mainAxisAlignment: MainAxisAlignment.end,
-//                 children: [
-//                   Image.asset('asserts/images/home add money icon.png', width: 55),
-//                   const SizedBox(height: 8),
-//                   const Text("Add Money",
-//                       style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500)),
-//                 ],
-//               )
-//             ],
-//           ),
-//         ),
-//       ],
-//     ),
-//   );
-// }
-  Widget _buildQuickActions() {
+} Widget _buildQuickActions() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -578,52 +461,6 @@ Widget _buildWalletCard() {
       ),
     );
   }
-  // Widget _buildBudgetSection() {
-  //   return Container(
-  //     padding: const EdgeInsets.all(20),
-  //     decoration: BoxDecoration(
-  //       color: Colors.white,
-  //       borderRadius: BorderRadius.circular(30),
-  //       boxShadow: [
-  //       BoxShadow(
-  //         color: const Color(0x26000000), // #00000026 (15% opacity)
-  //         offset: const Offset(0, -1),   // 0px horizontal, -1px vertical
-  //         blurRadius: 5,                 // 5px blur
-  //         spreadRadius: 0,               // 0px spread
-  //       ),
-  //     ],
-  //     ),
-  //     child: Column(
-  //       children: [
-  //         Row(
-  //           children: [
-  //             Image.asset('asserts/images/home budget icon.png', width: 40),
-  //             const SizedBox(width: 12),
-  //             const Text("Budget", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-  //             const Spacer(),
-  //             const Text("▲ 3.2%", style: TextStyle(color: Colors.green, fontSize: 12, fontWeight: FontWeight.bold)),
-  //           ],
-  //         ),
-  //         const SizedBox(height: 20),
-  //         Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //           children: [
-  //             _budgetText("My Spend", "\₹789"),
-  //             _budgetText("Set Budget", "\₹1000", alignment: CrossAxisAlignment.end),
-  //           ],
-  //         ),
-  //         const SizedBox(height: 10),
-  //         LinearProgressIndicator(
-  //           value: 0.789,
-  //           backgroundColor: Colors.grey[200],
-  //           color: const Color(0xFF00C853),
-  //           borderRadius: BorderRadius.circular(10),
-  //           minHeight: 8,
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   static Widget _budgetText(String title, String val, {CrossAxisAlignment alignment = CrossAxisAlignment.start}) {
     return Column(
@@ -761,36 +598,6 @@ Widget _buildWalletCard() {
   }
 }
 
-// class BottomCurveClipper extends CustomClipper<Path> {
-//   @override
-//   Path getClip(Size size) {
-//     Path path = Path();
-
-//     path.lineTo(0, size.height - 20);
-
-//     path.quadraticBezierTo(
-//       size.width * 0.25,
-//       size.height,
-//       size.width * 0.5,
-//       size.height - 10,
-//     );
-
-//     path.quadraticBezierTo(
-//       size.width * 0.75,
-//       size.height - 20,
-//       size.width,
-//       size.height - 10,
-//     );
-
-//     path.lineTo(size.width, 0);
-//     path.close();
-
-//     return path;
-//   }
-
-//   @override
-//   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-// }
 class TopCurveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
